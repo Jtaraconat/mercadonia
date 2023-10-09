@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+import java.util.Date;
+
 @Entity
 public class Product {
 
@@ -14,8 +16,20 @@ public class Product {
     private String description;
     private long price;
     private String image;
+    private Date promoStart;
+    private Date promoEnd;
     //private type catégorie
 
+
+    public Product(long id, String name, String description, long price, String image, Date promoStart, Date promoEnd) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.image = image;
+        this.promoStart = promoStart;
+        this.promoEnd = promoEnd;
+    }
 
     public long getId() {
         return id;
@@ -55,5 +69,21 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Date getPromoStart() {
+        return promoStart;
+    }
+
+    public void setPromoStart(Date promoStart) {
+        this.promoStart = promoStart;
+    }
+
+    public Date getPromoEnd() {
+        return promoEnd;
+    }
+
+    public void setPromoEnd(Date promoEnd) {
+        this.promoEnd = promoEnd;
     }
 }

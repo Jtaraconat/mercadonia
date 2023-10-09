@@ -11,6 +11,11 @@ public class Category {
     private long id;
     private String tag;
 
+    public Category(long id, String tag) {
+        this.id = id;
+        this.tag = tag;
+    }
+
     public long getId() {
         return id;
     }
