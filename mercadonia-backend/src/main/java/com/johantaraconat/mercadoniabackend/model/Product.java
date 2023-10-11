@@ -21,15 +21,6 @@ public class Product {
     //private type catégorie
 
 
-    public Product(long id, String name, String description, long price, String image, Date promoStart, Date promoEnd) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.image = image;
-        this.promoStart = promoStart;
-        this.promoEnd = promoEnd;
-    }
 
     public long getId() {
         return id;
