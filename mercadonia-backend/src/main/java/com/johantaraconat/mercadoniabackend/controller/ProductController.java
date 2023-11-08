@@ -40,11 +40,21 @@ public class ProductController {
                     product.setDescription(newProduct.getDescription());
                     product.setImage(newProduct.getImage());
                     product.setPrice(newProduct.getPrice());
+                    product.setPromoPrice(newProduct.getPromoPrice());
                     product.setPromoStart(newProduct.getPromoStart());
                     product.setPromoEnd(newProduct.getPromoEnd());
                     return productRepository.save(product);
                 })
                 .orElseThrow(()->new ProductNotFoundException(id));
+    }
+
+    @DeleteMapping("/product/{id}")
+    String deleteProduct(@PathVariable Long id){
+        if(!productRepository.existsById(id)) {
+            throw new ProductNotFoundException(id);
+        }
+        productRepository.deleteById(id);
+        return "Produit avec l'id: " + id + " a été supprimé";
     }
 
 }

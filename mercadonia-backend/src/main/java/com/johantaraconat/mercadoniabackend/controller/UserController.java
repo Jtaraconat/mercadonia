@@ -1,8 +1,8 @@
 package com.johantaraconat.mercadoniabackend.controller;
 
 import com.johantaraconat.mercadoniabackend.exception.AdminNotFoundException;
-import com.johantaraconat.mercadoniabackend.model.Admin;
-import com.johantaraconat.mercadoniabackend.repository.AdminRepository;
+import com.johantaraconat.mercadoniabackend.model.User;
+import com.johantaraconat.mercadoniabackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,25 +10,25 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
-public class AdminController {
+public class UserController {
 
     //all routes must be protected
     @Autowired
-    private AdminRepository adminRepository;
+    private UserRepository userRepository;
 
     @PostMapping("/admin")
-    Admin newAdmin(@RequestBody Admin newAdmin){
-        return adminRepository.save(newAdmin);
+    User newAdmin(@RequestBody User newUser){
+        return userRepository.save(newUser);
     }
 
     @GetMapping("/admins")
-    List<Admin> getAllAdmins() {
-        return adminRepository.findAll();
+    List<User> getAllAdmins() {
+        return userRepository.findAll();
     }
 
     @GetMapping("/admin/{id}")
-    Admin getAdminById(@PathVariable long id){
-        return adminRepository.findById(id)
+    User getAdminById(@PathVariable Integer id){
+        return userRepository.findById(id)
                 .orElseThrow(()-> new AdminNotFoundException(id));
     }
 }

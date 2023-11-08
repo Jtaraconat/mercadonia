@@ -1,5 +1,6 @@
 package com.johantaraconat.mercadoniabackend.controller;
 
+import com.johantaraconat.mercadoniabackend.exception.CategoryNotFoundException;
 import com.johantaraconat.mercadoniabackend.model.Category;
 import com.johantaraconat.mercadoniabackend.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,20 @@ public class CategoryController {
         private CategoryRepository categoryRepository;
 
     @PostMapping("/category")
-        Category addCategory(@RequestBody Category newCategory){
+        Category newCategory(@RequestBody Category newCategory){
         return categoryRepository.save(newCategory);
     }
 
     @GetMapping("/categories")
     List<Category> getAllCategories(){
         return categoryRepository.findAll();
+    }
+    @DeleteMapping("/category/{id}")
+    String deleteCategory(@PathVariable Long id){
+        if(!categoryRepository.existsById(id)) {
+            throw new CategoryNotFoundException(id);
+        }
+        categoryRepository.deleteById(id);
+        return "category avec l'id: " + id + " a été supprimé";
     }
 }

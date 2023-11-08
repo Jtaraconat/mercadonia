@@ -1,11 +1,6 @@
 package com.johantaraconat.mercadoniabackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-
-import java.util.Date;
+import jakarta.persistence.*;
 
 @Entity
 public class Product {
@@ -17,10 +12,10 @@ public class Product {
     private String description;
     private long price;
     private String image;
-    private Date promoStart;
-    private Date promoEnd;
-    @ManyToOne
-    private Category category;
+    private long promoPrice;
+    private long promoStart;
+    private long promoEnd;
+    private String category;
 
 
 
@@ -47,6 +42,13 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
+    public long getPromoPrice() {
+        return promoPrice;
+    }
+
+    public void setPromoPrice(long promoPrice) {
+        this.promoPrice = promoPrice;
+    }
 
     public long getPrice() {
         return price;
@@ -64,27 +66,27 @@ public class Product {
         this.image = image;
     }
 
-    public Date getPromoStart() {
+    public long getPromoStart() {
         return promoStart;
     }
 
-    public void setPromoStart(Date promoStart) {
+    public void setPromoStart(long promoStart) {
         this.promoStart = promoStart;
     }
 
-    public Date getPromoEnd() {
+    public long getPromoEnd() {
         return promoEnd;
     }
 
-    public void setPromoEnd(Date promoEnd) {
+    public void setPromoEnd(long promoEnd) {
         this.promoEnd = promoEnd;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }
