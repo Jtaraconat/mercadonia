@@ -1,6 +1,7 @@
 package com.johantaraconat.mercadoniabackend.controller;
 
 import com.johantaraconat.mercadoniabackend.exception.AdminNotFoundException;
+import com.johantaraconat.mercadoniabackend.exception.CategoryNotFoundException;
 import com.johantaraconat.mercadoniabackend.model.User;
 import com.johantaraconat.mercadoniabackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000"})
 public class UserController {
 
     //all routes must be protected
@@ -30,5 +31,14 @@ public class UserController {
     User getAdminById(@PathVariable Integer id){
         return userRepository.findById(id)
                 .orElseThrow(()-> new AdminNotFoundException(id));
+    }
+
+    @DeleteMapping("/admin/{id}")
+    String deleteCategory(@PathVariable Integer id){
+        if(!userRepository.existsById(id)) {
+            throw new CategoryNotFoundException(id);
+        }
+        userRepository.deleteById(id);
+        return "l'admin avec l'id: " + id + " a été supprimé";
     }
 }
