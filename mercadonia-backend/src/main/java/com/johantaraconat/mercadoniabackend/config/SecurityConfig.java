@@ -27,7 +27,8 @@ public class SecurityConfig {
          "/categories",
             "/products",
             "/login",
-            "/admin"
+            "/register",
+            "/**"
     };
 
     private final JwtAuthenticationFilter jwtAuthFilter;
@@ -39,7 +40,7 @@ public class SecurityConfig {
 
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
-                        req.requestMatchers("/**")
+                        req.requestMatchers(WHITE_LIST)
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated()
