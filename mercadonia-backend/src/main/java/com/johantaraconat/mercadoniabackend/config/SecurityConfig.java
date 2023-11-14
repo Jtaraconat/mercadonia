@@ -27,7 +27,7 @@ public class SecurityConfig {
          "/categories",
             "/products",
             "/login",
-            "https://mercadona-frontend-61476149f1e5.herokuapp.com/register",
+            "/register",
     };
 
     private final JwtAuthenticationFilter jwtAuthFilter;
