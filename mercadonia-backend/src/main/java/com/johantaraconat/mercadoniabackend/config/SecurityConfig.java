@@ -26,8 +26,8 @@ public class SecurityConfig {
     private static final String[] WHITE_LIST = {
          "/categories",
             "/products",
-            "https://mercadona-backend-fca430085216.herokuapp.com/login",
-            "https://mercadona-backend-fca430085216.herokuapp.com/register",
+            "/login",
+            "/register",
     };
 
     private final JwtAuthenticationFilter jwtAuthFilter;
@@ -37,6 +37,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
 
+                .cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST)
