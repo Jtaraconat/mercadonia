@@ -28,7 +28,6 @@ public class SecurityConfig {
             "/products",
             "/login",
             "/register",
-            "/**"
     };
 
     private final JwtAuthenticationFilter jwtAuthFilter;
