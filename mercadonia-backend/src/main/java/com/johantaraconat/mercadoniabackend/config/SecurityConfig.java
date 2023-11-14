@@ -26,7 +26,7 @@ public class SecurityConfig {
     private static final String[] WHITE_LIST = {
          "/categories",
             "/products",
-            "/login",
+            "https://mercadona-back-f6ca31b18f7a.herokuapp.com/login",
             "https://mercadona-back-f6ca31b18f7a.herokuapp.com/register",
     };
 
