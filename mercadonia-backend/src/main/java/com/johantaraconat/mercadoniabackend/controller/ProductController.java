@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://mercadona-frontend-61476149f1e5.herokuapp.com/")
 public class ProductController {
 
     @Autowired
