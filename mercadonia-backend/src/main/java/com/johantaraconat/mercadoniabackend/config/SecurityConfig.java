@@ -26,8 +26,8 @@ public class SecurityConfig {
     private static final String[] WHITE_LIST = {
          "/categories",
             "/products",
-            "https://mercadona-frontend-61476149f1e5.herokuapp.com/login",
-            "https://mercadona-frontend-61476149f1e5.herokuapp.com/register",
+            "https://mercadona-backend-fca430085216.herokuapp.com/login",
+            "https://mercadona-backend-fca430085216.herokuapp.com/register",
     };
 
     private final JwtAuthenticationFilter jwtAuthFilter;
